@@ -9,12 +9,17 @@ def read_config_file(config_name):
 	""" Read Config File """
 	config = configparser.ConfigParser()
 	config.read(config_name)
-	main_file_path = config['files and file paths']['main_file_path']
-	base_data_file = config['files and file paths']['base_data_file']
-	features_data_file = config['files and file paths']['features_data_file']
-	fake_data_file = config['files and file paths']['fake_data_file']
+	main_file_path = config['general']['main_file_path']
 
-	return main_file_path, base_data_file, features_data_file, fake_data_file
+	base_data_file = config['fakes']['base_data_file']
+	features_data_file = config['fakes']['features_data_file']
+	fake_data_file = config['fakes']['fake_data_file']
+
+	gal_sample_file = config['rates']['gal_sample_file']
+	vis_times_file = config['rates']['vis_times_file']
+	cosmic_dens_file = config['rates']['cosmic_dens_file']
+
+	return main_file_path, base_data_file, features_data_file, fake_data_file, gal_sample_file, vis_times_file, cosmic_dens_file
 
 def create_directory(main_file_path, directory):
 	""" Create Directory """
